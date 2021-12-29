@@ -6,11 +6,14 @@
     "start": "nodemon ./bin/www"
   },
   "dependencies": {
+    "bcrypt": "^5.0.1",
     "cookie-parser": "~1.4.4",
     "debug": "~2.6.9",
     "ejs": "~2.6.1",
     "express": "~4.16.1",
+    "express-sessions": "^1.0.6",
     "http-errors": "~1.6.3",
+    "mongoose": "^6.1.4",
     "morgan": "~1.9.1"
   }
 }
