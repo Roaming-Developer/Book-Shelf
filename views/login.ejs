@@ -68,6 +68,9 @@
             />
           </div>
           <div id="emailHelp" class="form-text"></div>
+          <% if(error) { %>
+          <p style="color: red" id="emailHelp" class="form-text"><%= error%></p>
+          <% } %>
           <button type="submit" class="btn btn-primary">Submit</button>
         </form>
       </div>
