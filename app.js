@@ -5,6 +5,12 @@ var cookieParser = require("cookie-parser");
 var logger = require("morgan");
 var mongoose = require("mongoose");
 
+var session = require("express-session");
+var MongoStore = require("connect-mongo");
+require("dotenv").config();
+
+var flash = require("connect-flash");
+
 var indexRouter = require("./routes/index");
 var usersRouter = require("./routes/users");
 
@@ -15,7 +21,7 @@ mongoose.connect(
   { useNewUrlParser: true, useUnifiedTopology: true },
   (err) => {
     console.log("Connected with [mongodb]", err ? false : true);
-    console.log("http://localhost:3000/");
+    console.log("ctrl + click -> " + "http://localhost:3000/");
   }
 );
 
@@ -28,6 +34,18 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
+
+// Session middleware
+app.use(
+  session({
+    secret: process.env.SECRET,
+    resave: false,
+    saveUninitialized: false,
+    store: MongoStore.create({ mongoUrl: "mongodb://localhost/user" }),
+  })
+);
+
+app.use(flash());
 
 app.use("/", indexRouter);
 app.use("/users", usersRouter);
