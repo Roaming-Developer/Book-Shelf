@@ -62,8 +62,10 @@ router.get("/:id", (req, res, next) => {
     });
 });
 
+router.use(auth.loggedInUser);
+
 // Protected
-router.get("/:id/edit", auth.loggedInUser, (req, res, next) => {
+router.get("/:id/edit", (req, res, next) => {
   var bookId = req.params.id;
   Book.findById(bookId, (err, book) => {
     if (err) return next(err);
@@ -72,7 +74,7 @@ router.get("/:id/edit", auth.loggedInUser, (req, res, next) => {
 });
 
 // Protected
-router.post("/:id", auth.loggedInUser, (req, res, next) => {
+router.post("/:id", (req, res, next) => {
   var bookId = req.params.id;
   Book.findByIdAndUpdate(bookId, req.body, (err, updatedBook) => {
     if (err) return next(err);
@@ -81,7 +83,7 @@ router.post("/:id", auth.loggedInUser, (req, res, next) => {
 });
 
 // Protected
-router.get("/:id/delete", auth.loggedInUser, (req, res, next) => {
+router.get("/:id/delete", (req, res, next) => {
   var bookId = req.params.id;
   Book.findByIdAndDelete(bookId, (err, book) => {
     if (err) return next(err);
@@ -95,7 +97,7 @@ router.get("/:id/delete", auth.loggedInUser, (req, res, next) => {
 // Comment and Book Routes
 
 // Protected
-router.post("/:id/comments", auth.loggedInUser, (req, res, next) => {
+router.post("/:id/comments", (req, res, next) => {
   var bookId = req.params.id;
   req.body.bookId = bookId;
   Comment.create(req.body, (err, comment) => {
