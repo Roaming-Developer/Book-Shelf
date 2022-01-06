@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+    <title>Edit Comment</title>
+  </head>
+  <body>
+    <nav>
+      <div class="container">
+        <div class="logo">
+          <a href="/"><h3>Book Store</h3></a>
+        </div>
+        <div class="links">
+          <a href="/books/"><button>Book List</button></a>
+        </div>
+      </div>
+    </nav>
+    <section class="container">
+      <div class="form">
+        <h3>Edit Comment "</h3>
+        <form action="/comment/<%= comment._id %>" method="POST">
+          <div class="form-group">
+            <label class="in-lb" for="description">New Comment Content</label>
+            <textarea class="fr-in" type="text" title="Content" name="content">
+<%= comment.content %></textarea
+            >
+          </div>
+          <button type="submit" class="fr-submit">Update Book Details</button>
+          <a href="/books/<%= comment.bookId %>"
+            ><button style="margin-top: 0.5rem" class="fr-submit btn-red">
+              Cancel
+            </button></a
+          >
+        </form>
+      </div>
+    </section>
+  </body>
+</html>
