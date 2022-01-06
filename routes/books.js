@@ -4,6 +4,8 @@ var router = express.Router();
 var Book = require("../models/book");
 var Comment = require("../models/comment");
 
+var auth = require("../middlewares/auth");
+
 // Router for Book
 router.get("/", (req, res, next) => {
   Book.find({}, (err, books) => {
@@ -12,11 +14,13 @@ router.get("/", (req, res, next) => {
   });
 });
 
-router.get("/new", (req, res, next) => {
+// Protected
+router.get("/new", auth.loggedInUser, (req, res, next) => {
   res.render("addBook");
 });
 
-router.post("/", (req, res, next) => {
+// Protected
+router.post("/", auth.loggedInUser, (req, res, next) => {
   // Save it to db
   Book.create(req.body, (err, createdBook) => {
     // console.log(err, createdBook);
@@ -58,7 +62,8 @@ router.get("/:id", (req, res, next) => {
     });
 });
 
-router.get("/:id/edit", (req, res, next) => {
+// Protected
+router.get("/:id/edit", auth.loggedInUser, (req, res, next) => {
   var bookId = req.params.id;
   Book.findById(bookId, (err, book) => {
     if (err) return next(err);
@@ -66,7 +71,8 @@ router.get("/:id/edit", (req, res, next) => {
   });
 });
 
-router.post("/:id", (req, res, next) => {
+// Protected
+router.post("/:id", auth.loggedInUser, (req, res, next) => {
   var bookId = req.params.id;
   Book.findByIdAndUpdate(bookId, req.body, (err, updatedBook) => {
     if (err) return next(err);
@@ -74,7 +80,8 @@ router.post("/:id", (req, res, next) => {
   });
 });
 
-router.get("/:id/delete", (req, res, next) => {
+// Protected
+router.get("/:id/delete", auth.loggedInUser, (req, res, next) => {
   var bookId = req.params.id;
   Book.findByIdAndDelete(bookId, (err, book) => {
     if (err) return next(err);
@@ -87,7 +94,8 @@ router.get("/:id/delete", (req, res, next) => {
 
 // Comment and Book Routes
 
-router.post("/:id/comments", (req, res, next) => {
+// Protected
+router.post("/:id/comments", auth.loggedInUser, (req, res, next) => {
   var bookId = req.params.id;
   req.body.bookId = bookId;
   Comment.create(req.body, (err, comment) => {
