@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/css/style.css" />
+    <title>Add New Book</title>
+  </head>
+  <body>
+    <nav>
+      <div class="container">
+        <div class="logo">
+          <a href="/"><h3>Book Store</h3></a>
+        </div>
+        <div class="links">
+          <a href="/books/"><button>Book List</button></a>
+        </div>
+      </div>
+    </nav>
+    <section class="container">
+      <div class="form">
+        <h3>Add New Book</h3>
+        <form action="/books" method="POST">
+          <div class="form-group">
+            <label class="in-lb" for="title">Enter the Title</label>
+            <input
+              class="fr-in"
+              type="text"
+              title="Title"
+              name="title"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label class="in-lb" for="description">Enter the Description</label>
+            <textarea
+              class="fr-in"
+              type="text"
+              title="Description"
+              name="description"
+            ></textarea>
+          </div>
+          <div class="form-group">
+            <label class="in-lb" for="price">Enter the Price</label>
+            <input class="fr-in" type="text" title="Price" name="price" />
+          </div>
+          <div class="form-group">
+            <label class="in-lb" for="author">Enter the Author</label>
+            <input class="fr-in" type="text" title="Author" name="author" />
+          </div>
+          <button type="submit" class="fr-submit">Add Book</button>
+        </form>
+      </div>
+    </section>
+  </body>
+</html>
