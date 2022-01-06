@@ -3,7 +3,10 @@ var router = express.Router();
 var Book = require("../models/book");
 var Comment = require("../models/comment");
 
-router.get("/:id/edit", (req, res, next) => {
+var auth = require("../middlewares/auth");
+
+// Protected
+router.get("/:id/edit", auth.loggedInUser, (req, res, next) => {
   // Redirect to Edit comment page
   var commentId = req.params.id;
   Comment.findById(commentId, (err, comment) => {
@@ -12,7 +15,8 @@ router.get("/:id/edit", (req, res, next) => {
   });
 });
 
-router.post("/:id/", (req, res, next) => {
+// Protected
+router.post("/:id/", auth.loggedInUser, (req, res, next) => {
   // update with new content
   var commentId = req.params.id;
   Comment.findByIdAndUpdate(commentId, req.body, (err, updatedComment) => {
@@ -20,7 +24,8 @@ router.post("/:id/", (req, res, next) => {
   });
 });
 
-router.get("/:id/delete", (req, res, next) => {
+// Protected
+router.get("/:id/delete", auth.loggedInUser, (req, res, next) => {
   var commentId = req.params.id;
   Comment.findByIdAndRemove(commentId, (err, comment) => {
     if (err) return next(err);

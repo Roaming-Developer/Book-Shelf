@@ -8,6 +8,7 @@ var bookSchema = new Schema(
     price: { type: Number, default: 0 },
     author: String,
     comments: [{ type: Schema.Types.ObjectId, ref: "Comment" }],
+    addedBy: String,
   },
   { timestamp: true }
 );
