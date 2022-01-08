@@ -3,6 +3,7 @@ var router = express.Router();
 
 var Book = require("../models/book");
 var Comment = require("../models/comment");
+var User = require("../models/User");
 
 var auth = require("../middlewares/auth");
 
@@ -22,6 +23,7 @@ router.get("/new", auth.loggedInUser, (req, res, next) => {
 // Protected
 router.post("/", auth.loggedInUser, (req, res, next) => {
   // Save it to db
+  req.body.addedBy = req.user._id;
   Book.create(req.body, (err, createdBook) => {
     // console.log(err, createdBook);
     if (err) return next(err);
@@ -55,6 +57,7 @@ router.get("/:id", (req, res, next) => {
   var bookId = req.params.id;
   Book.findById(bookId)
     .populate("comments") //Will fetch whole document using ObjectId
+    .populate("addedBy", "name email")
     .exec((err, book) => {
       if (err) return next(err);
       // res.send(book);
