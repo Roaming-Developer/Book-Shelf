@@ -40,9 +40,11 @@
             >
           </h3>
           <% if(user){ %>
-          <a href="/books/<%=book._id%>/edit"><button class="">Edit</button></a>
+          <a href="/books/<%=book._id%>/edit"
+            ><button class="btn-edit">Edit</button></a
+          >
           <a href="/books/<%=book._id%>/delete"
-            ><button class="btn-red">Delete</button></a
+            ><button class="btn-delete ms-2">Delete</button></a
           >
         </div>
       </div>

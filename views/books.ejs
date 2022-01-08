@@ -19,18 +19,21 @@
 
     <section class="container book">
       <div class="book__content">
-        <h2>Book List</h2>
+        <h2 class="shelf-heading">Browse the virtual Shelf</h2>
+        <hr />
+        <%if(books.length > 0){ books.forEach(book => { %>
         <div class="book-details">
-          <%if(books.length > 0){ books.forEach(book => { %>
           <div class="book-details__main">
-            <h3><%= book.title %> - <i><%= book.author %></i></h3>
+            <h4 class="book-heading"><%= book.title %> - <%= book.author %></h4>
           </div>
           <p><%= book.description.substr(0,200) + "..." %></p>
           <!-- <button>Buy Now for ₹<%= book.price %></button> -->
-          <a href="/books/<%= book._id %>">
-            <button>Show More</button>
-          </a>
-          <hr />
+          <a class="g-a b-a" href="/books/<%= book._id %>"
+            ><button class="btn-go">
+              Show More <i class="bi bi-arrow-right-short"></i></button
+          ></a>
+          <!-- <hr /> -->
+
           <% }); } else{ %>
           <div
             style="
