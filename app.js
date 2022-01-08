@@ -15,6 +15,8 @@ var indexRouter = require("./routes/index");
 var usersRouter = require("./routes/users");
 var bookRouter = require("./routes/books");
 
+var auth = require("./middlewares/auth");
+
 var app = express();
 
 mongoose.connect(
@@ -47,6 +49,8 @@ app.use(
 );
 
 app.use(flash());
+
+app.use(auth.userInfo);
 
 app.use("/", indexRouter);
 app.use("/users", usersRouter);

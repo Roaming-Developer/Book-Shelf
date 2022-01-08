@@ -12,33 +12,7 @@
     <link rel="stylesheet" href="/stylesheets/style.css" />
   </head>
   <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <div class="container">
-        <a class="navbar-brand" href="/">Book Store</a>
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarText"
-          aria-controls="navbarText"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarText">
-          <ul class="navbar-nav me-auto mb-2 mb-lg-0"></ul>
-          <span class="navbar-text">
-            <a href="/users/login"
-              ><button class="btn btn-primary">Login</button></a
-            >
-            <a href="/users/register"
-              ><button class="btn btn-primary">Register</button></a
-            >
-          </span>
-        </div>
-      </div>
-    </nav>
+    <% include partials/nav %>
     <Section class="user-section container">
       <div class="row">
         <div class="col-sm-6 user-section-content">
@@ -55,11 +29,8 @@
               <!-- <a href="">Click here </a>to view
               the npm packages used in this webapp. -->
             </p>
-            <a href="/users/login"
-              ><button class="btn btn-primary">Login</button></a
-            >
-            <a href="/users/register"
-              ><button class="btn btn-primary">Register</button></a
+            <a href="/books"
+              ><button class="btn btn-primary">Go to Book Store</button></a
             >
           </div>
         </div>
@@ -71,5 +42,11 @@
         </div>
       </div>
     </Section>
+    <!-- JavaScript Bundle with Popper -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+      crossorigin="anonymous"
+    ></script>
   </body>
 </html>
