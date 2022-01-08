@@ -14,6 +14,7 @@ var flash = require("connect-flash");
 var indexRouter = require("./routes/index");
 var usersRouter = require("./routes/users");
 var bookRouter = require("./routes/books");
+var commentRouter = require("./routes/comment");
 
 var auth = require("./middlewares/auth");
 
@@ -55,6 +56,7 @@ app.use(auth.userInfo);
 app.use("/", indexRouter);
 app.use("/users", usersRouter);
 app.use("/books", bookRouter);
+app.use("/comment", commentRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

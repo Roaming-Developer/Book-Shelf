@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins&family=Roboto&display=swap");
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css");
 
 /* font-family: "Poppins", sans-serif; */
 
@@ -42,6 +43,7 @@ button {
   font-family: "Poppins", sans-serif;
   border-radius: 5px !important;
   color: #fff !important;
+  border-color: #1f0022 !important;
 }
 
 .btn-red {
@@ -108,6 +110,39 @@ nav .container button {
   cursor: pointer;
 }
 
+.navbar-text a {
+  text-decoration: none;
+}
+
+.user-name,
+.add-i,
+.log-i {
+  font-size: 18px !important;
+  background-color: #fff;
+  border-radius: 10px;
+  padding: 0.5rem;
+  transition: 0.2s;
+}
+
+.user-name {
+  padding-left: 0.8rem !important;
+  padding-right: 0.8rem !important;
+}
+.user-name:hover {
+  background-color: #1f0022;
+  color: #fff !important;
+}
+
+.add-i:hover {
+  background-color: #00b7ff;
+  color: #fff;
+}
+
+.log-i:hover {
+  background-color: #c9000a;
+  color: #fff;
+}
+
 .logo h3 {
   color: #80c8e9;
 }
@@ -118,10 +153,6 @@ nav .container button {
 
 .book__content {
   padding: 1rem 0rem;
-}
-
-.book__content h2 {
-  text-align: center;
 }
 
 .form {
