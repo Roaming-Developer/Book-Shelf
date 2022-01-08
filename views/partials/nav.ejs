@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container">
-    <a class="navbar-brand" href="/">Book Store</a>
+    <a class="navbar-brand" href="/"><h5 class="fw-bolder">BookShelf</h5></a>
     <button
       class="navbar-toggler"
       type="button"
@@ -15,11 +15,18 @@
     <% if(user){ %>
     <div class="collapse navbar-collapse" id="navbarText">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0"></ul>
-      <span class="navbar-text">
-        <a href="/users/login"><%= user.name %></a>
-        <a href="/users/logout"
-          ><button class="btn btn-danger btn-sm">Logout</button></a
+      <span class="navbar-text" style="display: flex; align-items: center">
+        <a class="p-1 user-name" href="#"
+          ><button class="nav-btn btn-name"><%= user.name %></button></a
         >
+        <a class="p-1" href="/books/new"
+          ><button class="nav-btn btn-add">
+            <i class="bi bi-plus-circle h4 add-i"></i></button
+        ></a>
+        <a class="p-1" href="/users/logout">
+          <button class="nav-btn btn-logout">
+            <i class="bi bi-box-arrow-right h4 log-i"></i></button
+        ></a>
       </span>
     </div>
     <% } else {%>
@@ -27,10 +34,10 @@
       <ul class="navbar-nav me-auto mb-2 mb-lg-0"></ul>
       <span class="navbar-text">
         <a href="/users/login"
-          ><button class="btn btn-primary">Login</button></a
+          ><button class="nav-btn btn-login">Login</button></a
         >
         <a href="/users/register"
-          ><button class="btn btn-primary">Register</button></a
+          ><button class="nav-btn btn-register">Register</button></a
         >
       </span>
     </div>

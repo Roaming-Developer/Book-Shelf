@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins&family=Roboto&display=swap");
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css");
 
 /* font-family: "Poppins", sans-serif; */
 
@@ -9,7 +10,7 @@
 }
 
 body {
-  font-family: "Roboto", sans-serif;
+  font-family: "Poppins", sans-serif !important;
 }
 
 a {
@@ -17,7 +18,11 @@ a {
 }
 
 .user-section .row {
-  height: 85vh;
+  min-height: 80vh;
+}
+
+.user-section-content {
+  padding-bottom: 1rem;
 }
 
 .user-section-content,
@@ -25,6 +30,15 @@ a {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: #1f0022 !important;
 }
 
 input[type="submit"] {
@@ -42,6 +56,7 @@ button {
   font-family: "Poppins", sans-serif;
   border-radius: 5px !important;
   color: #fff !important;
+  border-color: #1f0022 !important;
 }
 
 .btn-red {
@@ -82,30 +97,143 @@ button {
   background-color: #1f002291;
 }
 
-.container {
+/* .container {
   width: 80%;
   margin: auto;
-}
+} */
 
 nav {
   background-color: #1f0022;
   color: #80c8e9;
 }
 
-nav .container {
+/* nav .container {
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 1rem 0rem;
-}
+} */
 
-nav .container button {
+/* nav .container button {
   background-color: #80c8e9;
   color: #1f0022;
   padding: 0.5rem 1rem;
   border: none;
   border-radius: 5px;
   cursor: pointer;
+} */
+
+.navbar-text a {
+  text-decoration: none;
+}
+
+/* .user-name,
+.add-i,
+.log-i {
+  font-size: 18px !important;
+  background-color: #fff;
+  border-radius: 10px;
+  padding: 0.5rem;
+  transition: 0.2s;
+} */
+
+/* .user-name {
+  padding-left: 0.8rem !important;
+  padding-right: 0.8rem !important;
+}
+.user-name:hover {
+  background-color: #1f0022;
+  color: #fff !important;
+}
+
+.add-i:hover {
+  background-color: #00b7ff;
+  color: #fff;
+}
+
+.log-i:hover {
+  background-color: #c9000a;
+  color: #fff;
+} */
+
+.nav-btn {
+  font-size: 18px;
+  border: none;
+  padding: 0.3rem;
+  background: #fff;
+  color: #1f0022 !important;
+  transition: 0.2s;
+}
+
+.btn-edit,
+.btn-delete,
+.comment-submit input {
+  border: none;
+  background: none;
+  padding: 0.5rem 1rem;
+  color: #1f0022 !important;
+  transition: 1s;
+}
+
+.btn-edit {
+  box-shadow: -2px 2px #00b7ff;
+}
+
+.btn-delete {
+  box-shadow: -2px 2px #fa0060;
+}
+
+.btn-name,
+.btn-login,
+.btn-register {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.btn-login:hover,
+.btn-register:hover {
+  color: #fff !important;
+  background-color: #00b7ff;
+}
+
+.btn-name:hover {
+  color: #fff !important;
+  background: #1f0022;
+}
+
+.btn-add:hover {
+  color: #fff !important;
+  background: #00b7ff;
+}
+
+.btn-logout:hover {
+  color: #fff !important;
+  background: #fa0060;
+}
+
+.g-a {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+.btn-go {
+  border: none;
+  font-weight: 600;
+  /* padding: 0.5rem 1rem; */
+  color: #1f0022 !important;
+  background: none;
+}
+
+.btn-go i {
+  padding-left: 0rem;
+  padding-right: 0.2rem;
+  transition: all 0.5s;
+}
+
+.btn-go:hover i {
+  padding-left: 0.2rem;
+  padding-right: 0rem;
 }
 
 .logo h3 {
@@ -118,10 +246,7 @@ nav .container button {
 
 .book__content {
   padding: 1rem 0rem;
-}
-
-.book__content h2 {
-  text-align: center;
+  /* background: #1f0022; */
 }
 
 .form {
@@ -159,27 +284,36 @@ nav .container button {
   cursor: pointer;
 }
 
+.shelf-heading {
+  font-weight: 600;
+  color: #1f0022;
+}
+
 .book-details {
   padding: 1rem 0rem;
   color: #1f0022;
 }
 
-.book-details__main {
+/* .book-details__main {
   padding: 1rem 0rem;
+} */
+
+.b-a {
+  padding-bottom: 1rem;
 }
 
 .book-details p {
-  padding-bottom: 1rem;
+  /* padding-bottom: 1rem; */
   color: #3d3d3d;
 }
 
-.book-details button {
+/* .book-details button {
   padding: 0.5rem 1rem;
   background-color: #1f0022;
   color: #80c8e9;
   border: none;
   border-radius: 5px;
-}
+} */
 
 .book-details hr {
   margin-top: 1rem;
@@ -198,19 +332,27 @@ nav .container button {
 
 .comment-submit input {
   padding: 0.5rem 1rem;
-  background-color: #1f0022;
-  color: #ffffff;
+  background: none;
+  color: #1f0022;
   border: none;
   border-radius: 5px;
+  box-shadow: -2px 2px #00fa0c;
+}
+
+.btn-edit:hover,
+.btn-delete:hover,
+.comment-submit input:hover {
+  transition: 1s;
+  box-shadow: 2px -2px #d4fa00;
 }
 
 .comment-ul li {
   list-style: none;
 }
 
-.btn-primary {
+/* .btn-primary {
   background-color: #1f0022 !important;
-}
+} */
 
 .comment-ul button {
   margin-bottom: 1rem;
