@@ -21,13 +21,15 @@ var auth = require("./middlewares/auth");
 var app = express();
 
 mongoose.connect(
-  "mongodb+srv://roamer:loveuhanu8310@cluster0.198vb.mongodb.net/user?retryWrites=true&w=majority",
+  "mongodb+srv://roamer:loveuhanu8310@cluster0.198vb.mongodb.net/",
   { useNewUrlParser: true, useUnifiedTopology: true },
   (err) => {
     console.log("Connected with [mongodb]", err ? false : true);
     console.log("ctrl + click -> " + "http://localhost:3000/");
   }
 );
+
+// user?retryWrites=true&w=majority
 
 // view engine setup
 app.set("views", path.join(__dirname, "views"));
