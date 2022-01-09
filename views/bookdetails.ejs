@@ -39,7 +39,7 @@
               ><%= book.addedBy.name %> (<%= book.addedBy.email %>)</small
             >
           </h3>
-          <% if(user){ %>
+          <% if(user && user.email === book.addedBy.email){ %>
           <a href="/books/<%=book._id%>/edit"
             ><button class="btn-edit">Edit</button></a
           >
@@ -48,6 +48,7 @@
           >
         </div>
       </div>
+      <%}%> <% if(user){ %>
       <div style="padding: 1rem 0rem" class="comment-form">
         <h3 style="margin-bottom: 1rem">Comments</h3>
         <form method="post" action="/books/<%=book._id%>/comments">
@@ -67,7 +68,6 @@
         </form>
       </div>
       <%}%>
-
       <div class="previous-comment" style="padding: 1rem 0rem">
         <h3 style="margin-bottom: 1rem">Previous Comments</h3>
         <ul class="comment-ul p-0">

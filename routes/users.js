@@ -9,7 +9,7 @@ var userObj = { name: "", email: "" };
 /* GET users listing. */
 router.get("/", function (req, res, next) {
   console.log(req.session.userId);
-  res.render("users", { userObj });
+  res.redirect("/");
 });
 
 router.get("/register", (req, res, next) => {
@@ -49,10 +49,8 @@ router.post("/login", (req, res, next) => {
       }
       // Create a session
       req.session.userId = user.id;
-      // userObj.name = user.name;
-      // userObj.email = user.email;
-      res.redirect("/users");
-      console.log(req.session.userId);
+      res.redirect("/books");
+      // console.log(req.session.userId);
     });
   });
 });
