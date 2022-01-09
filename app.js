@@ -21,7 +21,7 @@ var auth = require("./middlewares/auth");
 var app = express();
 
 mongoose.connect(
-  "mongodb://localhost/user",
+  "mongodb+srv://roamer:loveuhanu8310@cluster0.198vb.mongodb.net/user?retryWrites=true&w=majority",
   { useNewUrlParser: true, useUnifiedTopology: true },
   (err) => {
     console.log("Connected with [mongodb]", err ? false : true);
