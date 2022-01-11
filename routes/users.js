@@ -51,8 +51,8 @@ router.post("/login", (req, res, next) => {
       req.session.userId = user.id;
       // userObj.name = user.name;
       // userObj.email = user.email;
-      res.redirect("/users");
-      console.log(req.session.userId);
+      res.redirect("/");
+      // console.log(req.session.userId);
     });
   });
 });
