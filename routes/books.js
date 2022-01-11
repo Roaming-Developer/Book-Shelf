@@ -72,28 +72,43 @@ router.get("/:id/edit", (req, res, next) => {
   var bookId = req.params.id;
   Book.findById(bookId, (err, book) => {
     if (err) return next(err);
-    res.render("editBookForm", { book: book });
+    if (String(req.user._id) === String(book.addedBy._id)) {
+      res.render("editBookForm", { book: book });
+    } else {
+      res.send("You're not authorized to perform this action");
+    }
   });
 });
 
 // Protected
 router.post("/:id", (req, res, next) => {
   var bookId = req.params.id;
-  Book.findByIdAndUpdate(bookId, req.body, (err, updatedBook) => {
+  Book.findById(bookId, req.body, (err, updatedBook) => {
     if (err) return next(err);
-    res.redirect("/books/" + bookId);
+    if (String(req.user._id) === String(book.addedBy._id)) {
+      Book.findByIdAndUpdate(bookId, req.body, (err, updatedBook) => {
+        res.redirect("/books/" + bookId);
+      });
+    } else {
+      res.send("You're not authorized to perform this action");
+    }
   });
 });
 
 // Protected
 router.get("/:id/delete", (req, res, next) => {
   var bookId = req.params.id;
-  Book.findByIdAndDelete(bookId, (err, book) => {
+  Book.findById(bookId, (err, book) => {
     if (err) return next(err);
-    Comment.deleteMany({ bookId: book.id }, (err, book) => {
-      if (err) return next(err);
-      res.redirect("/books");
-    });
+    if (String(req.user._id) === String(book.addedBy._id)) {
+      Book.findByIdAndDelete(bookId, (err, book) => {});
+      Comment.deleteMany({ bookId: book.id }, (err, book) => {
+        if (err) return next(err);
+        res.redirect("/books");
+      });
+    } else {
+      res.send("You're not authorized to perform this action");
+    }
   });
 });
 
