@@ -21,7 +21,7 @@ var auth = require("./middlewares/auth");
 var app = express();
 
 mongoose.connect(
-  "mongodb+srv://roamer:loveuhanu8310@cluster0.198vb.mongodb.net/user?retryWrites=true&w=majority",
+  process.env.MONGODBURL,
   { useNewUrlParser: true, useUnifiedTopology: true },
   (err) => {
     console.log("Connected with [mongodb]", err ? false : true);
@@ -47,7 +47,7 @@ app.use(
     secret: process.env.SECRET,
     resave: false,
     saveUninitialized: false,
-    store: MongoStore.create({ mongoUrl: "mongodb://localhost/user" }),
+    store: MongoStore.create({ mongoUrl: process.env.MONGODBURL }),
   })
 );
 
