@@ -21,13 +21,15 @@ var auth = require("./middlewares/auth");
 var app = express();
 
 mongoose.connect(
-  "mongodb://localhost/user",
+  process.env.MONGODBURL,
   { useNewUrlParser: true, useUnifiedTopology: true },
   (err) => {
     console.log("Connected with [mongodb]", err ? false : true);
     console.log("ctrl + click -> " + "http://localhost:3000/");
   }
 );
+
+// user?retryWrites=true&w=majority
 
 // view engine setup
 app.set("views", path.join(__dirname, "views"));
@@ -45,7 +47,7 @@ app.use(
     secret: process.env.SECRET,
     resave: false,
     saveUninitialized: false,
-    store: MongoStore.create({ mongoUrl: "mongodb://localhost/user" }),
+    store: MongoStore.create({ mongoUrl: process.env.MONGODBURL }),
   })
 );
 
