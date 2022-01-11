@@ -85,7 +85,7 @@ router.post("/:id", (req, res, next) => {
   var bookId = req.params.id;
   Book.findById(bookId, req.body, (err, updatedBook) => {
     if (err) return next(err);
-    if (String(req.user._id) === String(book.addedBy._id)) {
+    if (String(req.user._id) === String(updatedBook.addedBy._id)) {
       Book.findByIdAndUpdate(bookId, req.body, (err, updatedBook) => {
         res.redirect("/books/" + bookId);
       });
