@@ -3,6 +3,7 @@ var User = require("../models/User");
 module.exports = {
   loggedInUser: (req, res, next) => {
     console.log(req.session);
+    // || req.session.passport.user
     if (req.session && req.session.userId) {
       next();
     } else {
@@ -12,6 +13,7 @@ module.exports = {
   },
   userInfo: (req, res, next) => {
     var userId = req.session && req.session.userId;
+
     if (userId) {
       User.findById(userId, "name email", (err, user) => {
         if (err) return next(err);
