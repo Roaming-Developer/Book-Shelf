@@ -4,7 +4,7 @@ var router = express.Router();
 var User = require("../models/User");
 var bcrypt = require("bcrypt");
 
-var userObj = { name: "", email: "" };
+// var userObj = { name: "", email: "" };
 
 /* GET users listing. */
 router.get("/", function (req, res, next) {
@@ -17,6 +17,9 @@ router.get("/register", (req, res, next) => {
 });
 
 router.get("/login", (req, res, next) => {
+  if (req.session.userId) {
+    res.redirect("/users/logout");
+  }
   var error = req.flash("error")[0];
   res.render("login", { error });
 });
@@ -59,9 +62,7 @@ router.post("/login", (req, res, next) => {
 
 router.get("/logout", (req, res, next) => {
   req.session.destroy();
-  // res.clearCookie("connect.sid");
-  // userObj.email = "";
-  // userObj.name = "";
+  res.clearCookie("connect.sid");
   res.redirect("/");
 });
 
