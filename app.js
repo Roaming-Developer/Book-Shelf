@@ -4,10 +4,12 @@ var path = require("path");
 var cookieParser = require("cookie-parser");
 var logger = require("morgan");
 var mongoose = require("mongoose");
+var passport = require("passport");
+require("dotenv").config();
+require("./modules/passport");
 
 var session = require("express-session");
 var MongoStore = require("connect-mongo");
-require("dotenv").config();
 
 var flash = require("connect-flash");
 
@@ -15,6 +17,7 @@ var indexRouter = require("./routes/index");
 var usersRouter = require("./routes/users");
 var bookRouter = require("./routes/books");
 var commentRouter = require("./routes/comment");
+var authRouter = require("./routes/auth");
 
 var auth = require("./middlewares/auth");
 
@@ -51,6 +54,8 @@ app.use(
   })
 );
 
+app.use(passport.initialize());
+app.use(passport.session());
 app.use(flash());
 
 app.use(auth.userInfo);
@@ -59,6 +64,7 @@ app.use("/", indexRouter);
 app.use("/users", usersRouter);
 app.use("/books", bookRouter);
 app.use("/comment", commentRouter);
+app.use("/auth", authRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
